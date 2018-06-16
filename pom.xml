@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.engining.pg</groupId>
+		<artifactId>pg-parent</artifactId>
+		<version>3.2.0-SNAPSHOT</version>
+	</parent>
+	
+	<groupId>net.engining.gm</groupId>
+	<artifactId>gm-parent</artifactId>
+	<packaging>pom</packaging>
+	<version>1.2.0-SNAPSHOT</version>
+	<description>架构基础数据管理包，包括通用枚举数据定义，系统通用参数定义，机构参数定义及服务等</description>
+	
+	<properties>
+		<gm.version>1.2.0-SNAPSHOT</gm.version>
+		<control.version>1.1.0-SNAPSHOT</control.version>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>net.engining.control</groupId>
+				<artifactId>control-parent</artifactId>
+				<version>${control.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.engining.gm</groupId>
+				<artifactId>gm-param-model</artifactId>
+				<version>${gm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.engining.gm</groupId>
+				<artifactId>gm-dict</artifactId>
+				<version>${gm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.engining.gm</groupId>
+				<artifactId>gm-sdk</artifactId>
+				<version>${gm.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<modules>
+		<module>gm-param-model</module>
+		<module>gm-dict</module>
+		<module>gm-sdk</module>
+	</modules>
+</project>

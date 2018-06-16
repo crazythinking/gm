@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.engining.gm</groupId>
+		<artifactId>gm-parent</artifactId>
+		<version>1.2.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<artifactId>gm-sdk</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.engining.pg</groupId>
+			<artifactId>pg-support</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.engining.pg</groupId>
+			<artifactId>pg-parameter-help</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.engining.pg</groupId>
+			<artifactId>pg-batch-help</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.engining.gm</groupId>
+			<artifactId>gm-param-model</artifactId>
+		</dependency>
+	</dependencies>
+</project>

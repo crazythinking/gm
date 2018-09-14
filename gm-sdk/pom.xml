@@ -22,6 +22,7 @@
 		<dependency>
 			<groupId>net.engining.pg</groupId>
 			<artifactId>pg-batch-help</artifactId>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>net.engining.gm</groupId>

@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class RedisContextConfig {
 
 	@Bean("redisTemplate")
-	public RedisTemplate<String, Serializable> redisCacheTemplate(RedisConnectionFactory factory) {
+	public RedisTemplate<String, Serializable> redisTemplate(RedisConnectionFactory factory) {
 		RedisTemplate<String, Serializable> rt = new RedisTemplate<String, Serializable>();
 		rt.setConnectionFactory(factory);
 		Jackson2JsonRedisSerializer<Serializable> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Serializable>(
@@ -35,6 +35,8 @@ public class RedisContextConfig {
 		rt.setValueSerializer(jackson2JsonRedisSerializer);
 		rt.setHashKeySerializer(new StringRedisSerializer());
 		rt.setHashValueSerializer(jackson2JsonRedisSerializer);
+		//support transaction 第二步：强制支持事物
+		rt.setEnableTransactionSupport(true);
 		rt.afterPropertiesSet();
 		return rt;
 	}

@@ -29,7 +29,7 @@ public class CommonProperties implements EnvironmentAware {
 	/**
 	 * 是否使用Json ParameterFacility
 	 */
-	private boolean isJsonParameterFacility = false;
+	private boolean jsonParameterFacility = false;
 
 	/**
 	 * 缓存过期时间值

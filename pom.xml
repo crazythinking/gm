@@ -60,14 +60,22 @@
 			</dependency>
 			<dependency>
 				<groupId>net.engining.gm</groupId>
+				<artifactId>gm-config</artifactId>
+				<version>${gm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.engining.gm</groupId>
 				<artifactId>gm-sdk</artifactId>
 				<version>${gm.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	
 	<modules>
 		<module>gm-param-model</module>
 		<module>gm-dict</module>
+		<module>gm-config</module>
 		<module>gm-sdk</module>
 	</modules>
+	
 </project>

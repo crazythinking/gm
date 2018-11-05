@@ -7,17 +7,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * 工程通用配置
  * 
  * @author luxue
  *
  */
-@Getter
-@Setter
 @ConfigurationProperties(prefix = "gm.common")
 public class CommonProperties implements EnvironmentAware {
 
@@ -95,6 +90,154 @@ public class CommonProperties implements EnvironmentAware {
 	 * 设置当任务被取消的同时是否从当前调度器移除的策略
 	 */
 	private boolean removeOnCancelPolicy = true;
+	
+	private long snowflakeWorkerId;
+	
+	private long snowflakeDataCenterId;
+
+	public String getAppname() {
+		return appname;
+	}
+
+	public void setAppname(String appname) {
+		this.appname = appname;
+	}
+
+	public String getAppVersion() {
+		return appVersion;
+	}
+
+	public void setAppVersion(String appVersion) {
+		this.appVersion = appVersion;
+	}
+
+	public boolean isJsonParameterFacility() {
+		return jsonParameterFacility;
+	}
+
+	public void setJsonParameterFacility(boolean jsonParameterFacility) {
+		this.jsonParameterFacility = jsonParameterFacility;
+	}
+
+	public long getExpireDuration() {
+		return expireDuration;
+	}
+
+	public void setExpireDuration(long expireDuration) {
+		this.expireDuration = expireDuration;
+	}
+
+	public TimeUnit getExpireTimeUnit() {
+		return expireTimeUnit;
+	}
+
+	public void setExpireTimeUnit(TimeUnit expireTimeUnit) {
+		this.expireTimeUnit = expireTimeUnit;
+	}
+
+	public boolean isEnableRedisCache() {
+		return enableRedisCache;
+	}
+
+	public void setEnableRedisCache(boolean enableRedisCache) {
+		this.enableRedisCache = enableRedisCache;
+	}
+
+	public String getSwaggerBasePackage() {
+		return swaggerBasePackage;
+	}
+
+	public void setSwaggerBasePackage(String swaggerBasePackage) {
+		this.swaggerBasePackage = swaggerBasePackage;
+	}
+
+	public String getDefaultOrgId() {
+		return defaultOrgId;
+	}
+
+	public void setDefaultOrgId(String defaultOrgId) {
+		this.defaultOrgId = defaultOrgId;
+	}
+
+	public String getJwtSignKey() {
+		return jwtSignKey;
+	}
+
+	public void setJwtSignKey(String jwtSignKey) {
+		this.jwtSignKey = jwtSignKey;
+	}
+
+	public long getJwtExpirationMills() {
+		return jwtExpirationMills;
+	}
+
+	public void setJwtExpirationMills(long jwtExpirationMills) {
+		this.jwtExpirationMills = jwtExpirationMills;
+	}
+
+	public String getDefaultPassword() {
+		return defaultPassword;
+	}
+
+	public void setDefaultPassword(String defaultPassword) {
+		this.defaultPassword = defaultPassword;
+	}
+
+	public int getScheduledThreadPoolSize() {
+		return scheduledThreadPoolSize;
+	}
+
+	public void setScheduledThreadPoolSize(int scheduledThreadPoolSize) {
+		this.scheduledThreadPoolSize = scheduledThreadPoolSize;
+	}
+
+	public String getScheduledThreadNamePrefix() {
+		return scheduledThreadNamePrefix;
+	}
+
+	public void setScheduledThreadNamePrefix(String scheduledThreadNamePrefix) {
+		this.scheduledThreadNamePrefix = scheduledThreadNamePrefix;
+	}
+
+	public int getAwaitTerminationSeconds() {
+		return awaitTerminationSeconds;
+	}
+
+	public void setAwaitTerminationSeconds(int awaitTerminationSeconds) {
+		this.awaitTerminationSeconds = awaitTerminationSeconds;
+	}
+
+	public boolean isWaitForTasksToCompleteOnShutdown() {
+		return waitForTasksToCompleteOnShutdown;
+	}
+
+	public void setWaitForTasksToCompleteOnShutdown(boolean waitForTasksToCompleteOnShutdown) {
+		this.waitForTasksToCompleteOnShutdown = waitForTasksToCompleteOnShutdown;
+	}
+
+	public boolean isRemoveOnCancelPolicy() {
+		return removeOnCancelPolicy;
+	}
+
+	public void setRemoveOnCancelPolicy(boolean removeOnCancelPolicy) {
+		this.removeOnCancelPolicy = removeOnCancelPolicy;
+	}
+
+	public long getSnowflakeWorkerId() {
+		return snowflakeWorkerId;
+	}
+
+	public void setSnowflakeWorkerId(long snowflakeWorkerId) {
+		this.snowflakeWorkerId = snowflakeWorkerId;
+	}
+
+	public long getSnowflakeDataCenterId() {
+		return snowflakeDataCenterId;
+	}
+
+	public void setSnowflakeDataCenterId(long snowflakeDataCenterId) {
+		this.snowflakeDataCenterId = snowflakeDataCenterId;
+	}
 
 	@Override
 	public void setEnvironment(Environment environment) {
@@ -108,7 +251,7 @@ public class CommonProperties implements EnvironmentAware {
 
 		if (org.springframework.util.StringUtils.hasText(springAppVersion)) {
 			if (StringUtils.isBlank(this.appVersion) || UNKNOWN.equals(this.appVersion)) {
-				setAppname(springAppVersion);
+				setAppVersion(springAppVersion);
 			}
 		}
 	}

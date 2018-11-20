@@ -5,7 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
-import net.engining.gm.config.props.CommonProperties;
+import net.engining.gm.config.props.GmCommonProperties;
+import net.engining.pg.param.props.PgParamAndCacheProperties;
 import net.engining.pg.parameter.JsonLocalCachedParameterFacility;
 import net.engining.pg.parameter.LocalCachedParameterFacility;
 import net.engining.pg.parameter.ParameterFacility;
@@ -13,6 +14,7 @@ import net.engining.pg.parameter.ProcessesProvider4Organization;
 import net.engining.pg.parameter.Provider4Organization;
 import net.engining.pg.parameter.RedisCachedParameterFacility;
 import net.engining.pg.parameter.RedisJsonCachedParameterFacility;
+import net.engining.pg.props.CommonProperties;
 import net.engining.pg.support.core.context.ApplicationContextHolder;
 
 /**
@@ -22,9 +24,15 @@ import net.engining.pg.support.core.context.ApplicationContextHolder;
  */
 @Configuration
 public class GeneralContextConfig {
-
+	
 	@Autowired
 	CommonProperties commonProperties;
+	
+	@Autowired
+	PgParamAndCacheProperties pgParamAndCacheProperties;
+	
+	@Autowired
+	GmCommonProperties gmCommonProperties;
 	
 	/**
 	 * ApplicationContext的静态辅助Bean，建议项目必须注入
@@ -42,28 +50,28 @@ public class GeneralContextConfig {
 	 */
 	@Bean
 	public ParameterFacility parameterFacility(){
-		if (commonProperties.isEnableRedisCache()) {
-			if(commonProperties.isJsonParameterFacility()){
+		if (pgParamAndCacheProperties.isEnableRedisCache()) {
+			if(pgParamAndCacheProperties.isJsonParameterFacility()){
 				RedisJsonCachedParameterFacility redisCachedParameterFacility = new RedisJsonCachedParameterFacility();
-				redisCachedParameterFacility.setExpireDuration(commonProperties.getExpireDuration());
-				redisCachedParameterFacility.setExpireTimeUnit(commonProperties.getExpireTimeUnit());
+				redisCachedParameterFacility.setExpireDuration(pgParamAndCacheProperties.getExpireDuration());
+				redisCachedParameterFacility.setExpireTimeUnit(pgParamAndCacheProperties.getExpireTimeUnit());
 				return redisCachedParameterFacility;
 			}
 			RedisCachedParameterFacility redisCachedParameterFacility = new RedisCachedParameterFacility();
-			redisCachedParameterFacility.setExpireDuration(commonProperties.getExpireDuration());
-			redisCachedParameterFacility.setExpireTimeUnit(commonProperties.getExpireTimeUnit());
+			redisCachedParameterFacility.setExpireDuration(pgParamAndCacheProperties.getExpireDuration());
+			redisCachedParameterFacility.setExpireTimeUnit(pgParamAndCacheProperties.getExpireTimeUnit());
 			return redisCachedParameterFacility;
 		}
 		
-		if(commonProperties.isJsonParameterFacility()){
+		if(pgParamAndCacheProperties.isJsonParameterFacility()){
 			JsonLocalCachedParameterFacility localCachedParameterFacility = new JsonLocalCachedParameterFacility();
-			localCachedParameterFacility.setExpireDuration(commonProperties.getExpireDuration());
-			localCachedParameterFacility.setExpireTimeUnit(commonProperties.getExpireTimeUnit());
+			localCachedParameterFacility.setExpireDuration(pgParamAndCacheProperties.getExpireDuration());
+			localCachedParameterFacility.setExpireTimeUnit(pgParamAndCacheProperties.getExpireTimeUnit());
 			return localCachedParameterFacility;
 		}
 		LocalCachedParameterFacility localCachedParameterFacility = new LocalCachedParameterFacility();
-		localCachedParameterFacility.setExpireDuration(commonProperties.getExpireDuration());
-		localCachedParameterFacility.setExpireTimeUnit(commonProperties.getExpireTimeUnit());
+		localCachedParameterFacility.setExpireDuration(pgParamAndCacheProperties.getExpireDuration());
+		localCachedParameterFacility.setExpireTimeUnit(pgParamAndCacheProperties.getExpireTimeUnit());
 		return localCachedParameterFacility;
 	}
 	
@@ -71,7 +79,7 @@ public class GeneralContextConfig {
 	public Provider4Organization provider4Organization(){
 		ProcessesProvider4Organization processesProvider4Organization = new ProcessesProvider4Organization();
 		//从配置文件获取默认机构ID
-		processesProvider4Organization.setCurrentOrganizationId(commonProperties.getDefaultOrgId());
+		processesProvider4Organization.setCurrentOrganizationId(gmCommonProperties.getDefaultOrgId());
 		return processesProvider4Organization;
 	}
 }

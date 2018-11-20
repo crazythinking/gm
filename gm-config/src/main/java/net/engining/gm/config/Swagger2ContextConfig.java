@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
 import io.swagger.annotations.ApiOperation;
-import net.engining.gm.config.props.CommonProperties;
+import net.engining.pg.props.CommonProperties;
 import net.engining.pg.support.utils.ValidateUtilExt;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;

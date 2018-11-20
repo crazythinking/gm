@@ -113,6 +113,10 @@
 		</dependency>
 		<dependency>
 			<groupId>net.engining.pg</groupId>
+			<artifactId>pg-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.engining.pg</groupId>
 			<artifactId>pg-parameter-help</artifactId>
 			<optional>true</optional>
 		</dependency>

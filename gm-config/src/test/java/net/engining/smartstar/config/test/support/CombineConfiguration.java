@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Profile;
 
 import net.engining.gm.config.GeneralContextConfig;
 import net.engining.gm.config.SnowflakeSequenceIDContextConfig;
-import net.engining.gm.config.props.CommonProperties;
+import net.engining.gm.config.props.GmCommonProperties;
 
 /**
  * 这个类用来组装需要的配置，根据不同的项目组装需要的配置项 <br>
@@ -20,7 +20,7 @@ import net.engining.gm.config.props.CommonProperties;
 @Configuration
 @Profile("autotest")
 @EnableConfigurationProperties(value = { 
-		CommonProperties.class
+		GmCommonProperties.class
 		})
 @Import(value = {
 		SnowflakeSequenceIDContextConfig.class,

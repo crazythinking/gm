@@ -8,7 +8,6 @@ import net.engining.control.core.dispatch.DetailedFlowListener;
 import net.engining.control.core.dispatch.MDCFlowListener;
 import net.engining.control.core.dispatch.SimpleFlowDispatcher;
 import net.engining.control.sdk.FlowTransProcessorTemplate;
-import net.engining.pg.web.filter.Log4jMappedDiagnosticContextFilter;
 
 /**
  * @author luxue
@@ -45,9 +44,4 @@ public class FlowTransContextConfig {
 		return new MDCFlowListener();
 	}
 	
-	@Bean
-	public Log4jMappedDiagnosticContextFilter log4jMappedDiagnosticContextFilter(){
-		return new Log4jMappedDiagnosticContextFilter();
-	}
-
 }

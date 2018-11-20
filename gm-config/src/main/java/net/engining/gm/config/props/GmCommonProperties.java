@@ -1,11 +1,6 @@
 package net.engining.gm.config.props;
 
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.EnvironmentAware;
-import org.springframework.core.env.Environment;
 
 /**
  * 工程通用配置
@@ -14,32 +9,7 @@ import org.springframework.core.env.Environment;
  *
  */
 @ConfigurationProperties(prefix = "gm.common")
-public class CommonProperties implements EnvironmentAware {
-
-	private static final String UNKNOWN = "unknown";
-	private String appname = UNKNOWN;
-	
-	private String appVersion = UNKNOWN;
-	
-	/**
-	 * 是否使用Json ParameterFacility
-	 */
-	private boolean jsonParameterFacility = false;
-
-	/**
-	 * 缓存过期时间值
-	 */
-	private long expireDuration = 5;
-
-	/**
-	 * 缓存过期时间单位
-	 */
-	private TimeUnit expireTimeUnit = TimeUnit.MINUTES;
-
-	/**
-	 * 是否使用RedisCache的开关, 默认false
-	 */
-	private boolean enableRedisCache = false;
+public class GmCommonProperties {
 
 	/**
 	 * Swagger扫描包
@@ -94,54 +64,6 @@ public class CommonProperties implements EnvironmentAware {
 	private long snowflakeWorkerId;
 	
 	private long snowflakeDataCenterId;
-
-	public String getAppname() {
-		return appname;
-	}
-
-	public void setAppname(String appname) {
-		this.appname = appname;
-	}
-
-	public String getAppVersion() {
-		return appVersion;
-	}
-
-	public void setAppVersion(String appVersion) {
-		this.appVersion = appVersion;
-	}
-
-	public boolean isJsonParameterFacility() {
-		return jsonParameterFacility;
-	}
-
-	public void setJsonParameterFacility(boolean jsonParameterFacility) {
-		this.jsonParameterFacility = jsonParameterFacility;
-	}
-
-	public long getExpireDuration() {
-		return expireDuration;
-	}
-
-	public void setExpireDuration(long expireDuration) {
-		this.expireDuration = expireDuration;
-	}
-
-	public TimeUnit getExpireTimeUnit() {
-		return expireTimeUnit;
-	}
-
-	public void setExpireTimeUnit(TimeUnit expireTimeUnit) {
-		this.expireTimeUnit = expireTimeUnit;
-	}
-
-	public boolean isEnableRedisCache() {
-		return enableRedisCache;
-	}
-
-	public void setEnableRedisCache(boolean enableRedisCache) {
-		this.enableRedisCache = enableRedisCache;
-	}
 
 	public String getSwaggerBasePackage() {
 		return swaggerBasePackage;
@@ -237,23 +159,6 @@ public class CommonProperties implements EnvironmentAware {
 
 	public void setSnowflakeDataCenterId(long snowflakeDataCenterId) {
 		this.snowflakeDataCenterId = snowflakeDataCenterId;
-	}
-
-	@Override
-	public void setEnvironment(Environment environment) {
-		String springAppName = environment.getProperty("spring.application.name");
-		String springAppVersion = environment.getProperty("info.version");
-		if (org.springframework.util.StringUtils.hasText(springAppName)) {
-			if (StringUtils.isBlank(this.appname) || UNKNOWN.equals(this.appname)) {
-				setAppname(springAppName);
-			}
-		}
-
-		if (org.springframework.util.StringUtils.hasText(springAppVersion)) {
-			if (StringUtils.isBlank(this.appVersion) || UNKNOWN.equals(this.appVersion)) {
-				setAppVersion(springAppVersion);
-			}
-		}
 	}
 
 }

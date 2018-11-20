@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import net.engining.gm.config.props.CommonProperties;
+import net.engining.gm.config.props.GmCommonProperties;
 import net.engining.pg.support.db.id.generator.SnowflakeSequenceID;
 
 /**
@@ -17,11 +17,11 @@ import net.engining.pg.support.db.id.generator.SnowflakeSequenceID;
 public class SnowflakeSequenceIDContextConfig {
 	
 	@Autowired
-	CommonProperties commonProperties;
+	GmCommonProperties gmCommonProperties;
 
 	@Bean
 	public SnowflakeSequenceID snowflakeSequenceId() {
-		SnowflakeSequenceID snowflakeSequenceID = new SnowflakeSequenceID(commonProperties.getSnowflakeWorkerId(), commonProperties.getSnowflakeDataCenterId());
+		SnowflakeSequenceID snowflakeSequenceID = new SnowflakeSequenceID(gmCommonProperties.getSnowflakeWorkerId(), gmCommonProperties.getSnowflakeDataCenterId());
 		return snowflakeSequenceID;
 
 	}

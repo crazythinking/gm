@@ -27,8 +27,8 @@ public class WebMvcExtContextConfig implements WebMvcConfigurer{
 	@Override
 	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
 		//通过这个钩子，修改MessageConverter的配置，这里对json转换的行为修改，忽略null
-		for (HttpMessageConverter converter : converters) {
-			if (converters instanceof MappingJackson2HttpMessageConverter) {
+		for (HttpMessageConverter<?> converter : converters) {
+			if (converter instanceof MappingJackson2HttpMessageConverter) {
 				((MappingJackson2HttpMessageConverter) converters).getObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
 			}
 		}

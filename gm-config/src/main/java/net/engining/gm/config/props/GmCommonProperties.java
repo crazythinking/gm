@@ -64,6 +64,70 @@ public class GmCommonProperties {
 	private long snowflakeWorkerId;
 	
 	private long snowflakeDataCenterId;
+	
+	private int asyncExcutorColePoolSize = 5;
+	
+	private int asyncExcutorMaxPoolSize = 5;
+	
+	private int asyncExcutorQueueCapacity = 10;
+	
+	private String asyncExcutorThreadNamePrefix;
+
+	/**
+	 * @return the asyncExcutorThreadNamePrefix
+	 */
+	public String getAsyncExcutorThreadNamePrefix() {
+		return asyncExcutorThreadNamePrefix;
+	}
+
+	/**
+	 * @param asyncExcutorThreadNamePrefix the asyncExcutorThreadNamePrefix to set
+	 */
+	public void setAsyncExcutorThreadNamePrefix(String asyncExcutorThreadNamePrefix) {
+		this.asyncExcutorThreadNamePrefix = asyncExcutorThreadNamePrefix;
+	}
+
+	/**
+	 * @return the asyncExcutorColePoolSize
+	 */
+	public int getAsyncExcutorColePoolSize() {
+		return asyncExcutorColePoolSize;
+	}
+
+	/**
+	 * @param asyncExcutorColePoolSize the asyncExcutorColePoolSize to set
+	 */
+	public void setAsyncExcutorColePoolSize(int asyncExcutorColePoolSize) {
+		this.asyncExcutorColePoolSize = asyncExcutorColePoolSize;
+	}
+
+	/**
+	 * @return the asyncExcutorMaxPoolSize
+	 */
+	public int getAsyncExcutorMaxPoolSize() {
+		return asyncExcutorMaxPoolSize;
+	}
+
+	/**
+	 * @param asyncExcutorMaxPoolSize the asyncExcutorMaxPoolSize to set
+	 */
+	public void setAsyncExcutorMaxPoolSize(int asyncExcutorMaxPoolSize) {
+		this.asyncExcutorMaxPoolSize = asyncExcutorMaxPoolSize;
+	}
+
+	/**
+	 * @return the asyncExcutorQueueCapacity
+	 */
+	public int getAsyncExcutorQueueCapacity() {
+		return asyncExcutorQueueCapacity;
+	}
+
+	/**
+	 * @param asyncExcutorQueueCapacity the asyncExcutorQueueCapacity to set
+	 */
+	public void setAsyncExcutorQueueCapacity(int asyncExcutorQueueCapacity) {
+		this.asyncExcutorQueueCapacity = asyncExcutorQueueCapacity;
+	}
 
 	public String getSwaggerBasePackage() {
 		return swaggerBasePackage;

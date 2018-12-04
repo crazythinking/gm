@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     2018年12月3日 下午2:49:06                                                        
+
+     gm-dict-ant    
+     use ant build auto generator sql from ERMaster
+                   
+     Eric Lu                                                                
+     ====================================================================== -->
+<project name="gm-dict-ant" default="ddl">
+    <description>
+            use ant build auto generator sql from ERMaster
+    </description>
+
+    <!-- ================================= 
+          target: run              
+         ================================= -->
+    <target name="ddl" description="use ant build auto generator sql from ERMaster">
+    	<ermaster.ddl diagramFile="gm.erm" outputFile="src\main\java\net\engining\gm\sqlscript\gm-mysql.sql" encoding="UTF-8" />
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="depends">
+    	
+    </target>
+
+</project>

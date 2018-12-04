@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -41,7 +42,39 @@
 			</resource>
 		</resources>
 		<plugins>
-
+			<!-- 运行期找不到依赖，待解决：failed to create task or type ermaster.ddl；Cause: The name is undefined -->
+			<!-- <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>ant-build</id>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<ant antfile="${project.basedir}/build.xml">
+									<target name="ddl" />
+								</ant>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.platform</groupId>
+						<artifactId>org.eclipse.equinox.launcher</artifactId>
+						<version>1.5.100</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.ant</groupId>
+						<artifactId>org.eclipse.ant.core</artifactId>
+						<version>3.2.200.v20100427</version>
+					</dependency>
+				</dependencies>
+			</plugin> -->
 			<!-- entity类生成插件 -->
 			<plugin>
 				<groupId>net.engining.pg</groupId>

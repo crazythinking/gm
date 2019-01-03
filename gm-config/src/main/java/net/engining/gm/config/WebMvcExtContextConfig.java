@@ -29,7 +29,7 @@ public class WebMvcExtContextConfig implements WebMvcConfigurer{
 		//通过这个钩子，修改MessageConverter的配置，这里对json转换的行为修改，忽略null
 		for (HttpMessageConverter<?> converter : converters) {
 			if (converter instanceof MappingJackson2HttpMessageConverter) {
-				((MappingJackson2HttpMessageConverter) converters).getObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
+				((MappingJackson2HttpMessageConverter) converter).getObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
 			}
 		}
 	}

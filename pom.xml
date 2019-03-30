@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.engining.pg</groupId>
-		<artifactId>pg-parent</artifactId>
-		<version>3.3.0-SNAPSHOT</version>
+		<groupId>net.engining.project</groupId>
+		<artifactId>project-parent</artifactId>
+		<version>3.3-SNAPSHOT</version>
 	</parent>
 	
 	<groupId>net.engining.gm</groupId>
@@ -14,12 +14,41 @@
 	<description>架构基础数据管理包，包括通用枚举数据定义，系统通用参数定义，机构参数定义及服务等</description>
 	
 	<properties>
+		<pg.version>3.3.0-SNAPSHOT</pg.version>
 		<gm.version>1.2.1-SNAPSHOT</gm.version>
 		<control.version>1.1.1-SNAPSHOT</control.version>
+		<swagger2.version>2.9.2</swagger2.version>
 	</properties>
 	
 	<dependencyManagement>
 		<dependencies>
+			<!-- spring cloud -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Edgware.SR5</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger2.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.engining.pg</groupId>
+				<artifactId>pg-parent</artifactId>
+				<version>${pg.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 			<dependency>
 				<groupId>net.engining.control</groupId>
 				<artifactId>control-parent</artifactId>
@@ -42,11 +71,17 @@
 				<artifactId>gm-sdk</artifactId>
 				<version>${gm.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>net.engining.gm</groupId>
+				<artifactId>gm-config</artifactId>
+				<version>${gm.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<modules>
 		<module>gm-param-model</module>
 		<module>gm-dict</module>
 		<module>gm-sdk</module>
+		<module>gm-config</module>
 	</modules>
 </project>
